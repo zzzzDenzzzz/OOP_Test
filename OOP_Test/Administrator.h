@@ -1,15 +1,8 @@
 #pragma once
 
-#include<string>
+#include"User.h"
 
-class Administrator
+class Administrator : public User
 {
-	::std::string login;
-	::std::string password;
-public:
-	Administrator();
-	::std::string getLogin();
-	::std::string getPassword();
-	void setLogin(::std::string login);
-	void setPassword(::std::string password);
+
 };
