@@ -1,5 +1,4 @@
 #include"Menu.h"
-#include"Login.h"
 
 int main()
 {
@@ -14,13 +13,11 @@ int main()
 	switch (m.startPage())
 	{
 	case '1':
-		m.registrationPage();
-		break;
-	case '2':
 		m.signInPage();
 		break;
-	case '3':
+	case '2':
 		exit(0);
+		break;
 	}
 
 	return 0;

@@ -6,19 +6,12 @@ char Menu::startPage()
 	bool exit = false;
 	while (!exit)
 	{
-		cout << "1.Регистрация\n";
-		cout << "2.Вход\n";
-		cout << "3.Выход\n";
+		cout << "1.Вход\n";
+		cout << "2.Выход\n";
 		cin >> item_menu;
 		switch (item_menu)
 		{
-		case '1':
-			exit = true;
-			break;
-		case '2':
-			exit = true;
-			break;
-		case '3':
+		case '1': case '2':
 			exit = true;
 			break;
 		default:
@@ -51,11 +44,11 @@ void Menu::registrationAdminPage()
 	cout << "Login: ";
 	string tmp_login;
 	cin >> tmp_login;
-	admin.setLogin(tmp_login);
+	admin.getLogin().setLogin(tmp_login);
 	cout << "Password: ";
 	string tmp_password;
 	cin >> tmp_password;
-	admin.setPassword(tmp_password);
+	admin.getPassword().setPassword(tmp_password);
 	admin.writing("admin.txt");
 	system("cls");
 }
@@ -64,6 +57,13 @@ void Menu::signInPage()
 {
 	system("cls");
 	cout << "Login: ";
+	string tmp_login;
+	cin >> tmp_login;
+	login.setLogin(tmp_login);
+	cout << "Password: ";
+	string tmp_password;
+	cin >> tmp_password;
+	password.setPassword(tmp_password);
 }
 
 bool Menu::checkAdministrator(const string &path)

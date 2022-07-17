@@ -6,18 +6,18 @@ void Administrator::writing(const string &path)
 	out.open(path, ios::out);
 	if (out.is_open())
 	{
-		out << "login: " << login << endl;
-		out << "password: " << password << endl;
+		out << "login: " << login.getLogin() << endl;
+		out << "password: " << password.getPassword() << endl;
 	}
 	out.close();
 }
 
-void Administrator::setLogin(string &login)
+Login Administrator::getLogin()
 {
-	this->login = login;
+	return login;
 }
 
-void Administrator::setPassword(string &password)
+Password Administrator::getPassword()
 {
-	this->password = password;
+	return password;
 }
