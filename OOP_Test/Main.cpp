@@ -1,11 +1,27 @@
-#include<Windows.h>
-#include"Test.h"
+#include"Menu.h"
+#include"Login.h"
 
 int main()
 {
-	Test test;
 	SetConsoleOutputCP(1251);
-	test.start();
+
+	Menu m;
+
+	if (!m.checkAdministrator("admin.txt"))
+	{
+		m.registrationAdminPage();
+	}
+	switch (m.startPage())
+	{
+	case '1':
+		m.registrationPage();
+		break;
+	case '2':
+		m.signInPage();
+		break;
+	case '3':
+		exit(0);
+	}
 
 	return 0;
 }

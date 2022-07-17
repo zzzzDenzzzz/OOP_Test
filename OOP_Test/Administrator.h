@@ -1,8 +1,16 @@
 #pragma once
 
-#include"User.h"
+#include<string>
+#include<fstream>
 
-class Administrator : public User
+using namespace std;
+
+class Administrator
 {
-
+	string login;
+	string password;
+public:
+	void writing(const string &path);
+	void setLogin(string &login);
+	void setPassword(string &password);
 };
