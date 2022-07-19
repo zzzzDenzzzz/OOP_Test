@@ -1,19 +1,13 @@
 #pragma once
 
-#include<string>
-#include<fstream>
-#include"Login.h"
-#include"Password.h"
+#include"User.h"
 
 using namespace std;
 
-class Administrator
+class Administrator : public User
 {
-	Login login;
-	Password password;
-
+	const string path_admin{ "admin\\admin.txt" };
 public:
-	void writing(const string &path);
-	Login getLogin();
-	Password getPassword();
+	void writing();
+	bool checkAdministrator();
 };

@@ -1,9 +1,8 @@
 #include "Administrator.h"
 
-void Administrator::writing(const string &path)
+void Administrator::writing()
 {
-	ofstream out;
-	out.open(path, ios::out);
+	out.open(path_admin, ios::out);
 	if (out.is_open())
 	{
 		out << "login: " << login.getLogin() << endl;
@@ -12,12 +11,12 @@ void Administrator::writing(const string &path)
 	out.close();
 }
 
-Login Administrator::getLogin()
+bool Administrator::checkAdministrator()
 {
-	return login;
-}
-
-Password Administrator::getPassword()
-{
-	return password;
+	ifstream in(path_admin);
+	if (in.good())
+	{
+		return true;
+	}
+	return false;
 }

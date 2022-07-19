@@ -11,7 +11,8 @@ char Menu::startPage()
 		cin >> item_menu;
 		switch (item_menu)
 		{
-		case '1': case '2':
+		case '1': 
+		case '2':
 			exit = true;
 			break;
 		default:
@@ -27,14 +28,23 @@ char Menu::startPage()
 void Menu::registrationPage()
 {
 	system("cls");
+	cout << "Регистрация пользователя\n";
 	cout << "Login: ";
 	string tmp_login;
 	cin >> tmp_login;
-	login.setLogin(tmp_login);
+	user.getLogin()->setLogin(tmp_login);
 	cout << "Password: ";
 	string tmp_password;
 	cin >> tmp_password;
-	password.setPassword(tmp_password);
+	user.getPassword()->setPassword(tmp_password);
+	if (user.checkUser(tmp_login))
+	{
+		cout << "Пользователь с таким именем уже существует.\n";
+	}
+	else
+	{
+		user.writing(tmp_login);
+	}
 }
 
 void Menu::registrationAdminPage()
@@ -44,12 +54,12 @@ void Menu::registrationAdminPage()
 	cout << "Login: ";
 	string tmp_login;
 	cin >> tmp_login;
-	admin.getLogin().setLogin(tmp_login);
+	admin.getLogin()->setLogin(tmp_login);
 	cout << "Password: ";
 	string tmp_password;
 	cin >> tmp_password;
-	admin.getPassword().setPassword(tmp_password);
-	admin.writing("admin.txt");
+	admin.getPassword()->setPassword(tmp_password);
+	admin.writing();
 	system("cls");
 }
 
@@ -66,12 +76,7 @@ void Menu::signInPage()
 	password.setPassword(tmp_password);
 }
 
-bool Menu::checkAdministrator(const string &path)
+Administrator *Menu::getAdmin()
 {
-	ifstream out(path);
-	if (out.good())
-	{
-		return true;
-	}
-	return false;
+	return &admin;
 }

@@ -4,16 +4,16 @@ int main()
 {
 	SetConsoleOutputCP(1251);
 
-	Menu m;
+	Menu menu;
 
-	if (!m.checkAdministrator("admin.txt"))
+	if (!menu.getAdmin()->checkAdministrator())
 	{
-		m.registrationAdminPage();
+		menu.registrationAdminPage();
 	}
-	switch (m.startPage())
+	switch (menu.startPage())
 	{
 	case '1':
-		m.signInPage();
+		menu.registrationPage();
 		break;
 	case '2':
 		exit(0);
